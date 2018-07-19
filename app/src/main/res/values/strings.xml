@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Jogja Flight</string>
+    <string name="SelamatDatang"> Selamat Datang </string>
+    <string name="masuk">Masuk</string>
+    <string name="hintuser"><font size="1">nama pengguna, email, no. HP</font></string>
+    <string name="hintpass"><font size="1">sandi</font></string>
+    <string name="tulisantombol">masuk</string>
+    <string name="tulisanbantuan">bantuan</string>
+    <string name="jadwal">Jadwal Kuliah</string>
+    <string name="mka">Mata Kuliah</string>
+    <string name="nilai">Nilai</string>
+    <string name="absensi">Absensi</string>
 </resources>
