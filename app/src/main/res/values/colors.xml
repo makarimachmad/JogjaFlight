@@ -7,4 +7,5 @@
     <color name="tombolhighlight">#fd9241</color>
     <color name="tombolnormal" >#f97d1f</color>
     <color name="lightgray">#ededed</color>
+    <color name="iron">#CCCCCC</color>
 </resources>
