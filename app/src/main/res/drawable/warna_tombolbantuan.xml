@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/bentuk_tombol_dipencet"
+        android:state_pressed="true" />
+
+    <!-- Mendefinisikan button saat terfokus -->
+    <item android:drawable="@drawable/bentuk_tombol_dipencet"
+        android:state_focused="true"
+        />
+
+    <!-- Mendefinisikan button saat dalam kondisi normal -->
+    <item android:drawable="@drawable/bentuk_tombol" />
+
+
+</selector>
