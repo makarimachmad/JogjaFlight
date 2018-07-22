@@ -2,7 +2,7 @@ package com.example.witono.jogjaflight.model;
 
 import java.io.Serializable;
 
-public class LoginResponse implements Serializable{
+public class CheckUserResponse implements Serializable{
     private Boolean exist;
 
     public Boolean getExist() {

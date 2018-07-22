@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.witono.jogjaflight">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,7 +12,7 @@
         android:screenOrientation="portrait"
         >
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme"
             >
@@ -21,15 +22,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"
+        <activity android:name=".view.LoginActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
-        <activity android:name=".AbsensiActivity"
+        <activity android:name=".view.AbsensiActivity"
             android:theme="@style/AppTheme"></activity>
-        <activity android:name=".MataKuliahActivity"
+        <activity android:name=".view.MataKuliahActivity"
             android:theme="@style/AppTheme"></activity>
-        <activity android:name=".JadwalActivity"
+        <activity android:name=".view.JadwalActivity"
             android:theme="@style/AppTheme"></activity>
-        <activity android:name=".NilaiActivity"
+        <activity android:name=".view.NilaiActivity"
             android:theme="@style/AppTheme"></activity>
     </application>
 
