@@ -1,6 +1,5 @@
 package com.example.witono.jogjaflight.network;
 
-import com.example.witono.jogjaflight.model.CheckUserResponse;
 import com.example.witono.jogjaflight.model.LoginResponse;
 
 import retrofit2.http.Field;
@@ -16,6 +15,6 @@ public interface SiakadService {
 
     @FormUrlEncoded
     @POST("login")
-    Observable<LoginResponse> login(@Field("username") String username,@Field("password") String password);
+    Observable<LoginResponse> login(@Field("username") String username, @Field("password") String password);
 
 }

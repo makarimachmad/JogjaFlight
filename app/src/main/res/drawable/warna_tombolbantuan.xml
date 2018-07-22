@@ -9,7 +9,7 @@
         />
 
     <!-- Mendefinisikan button saat dalam kondisi normal -->
-    <item android:drawable="@drawable/bentuk_tombol" />
+    <item android:drawable="@drawable/bentuk_tombolbantuan" />
 
 
 </selector>

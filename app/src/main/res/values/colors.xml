@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#fff</color>
-    <color name="colorPrimaryDark">#edebeb</color>
+    <color name="colorPrimaryDark">#838383</color>
     <color name="colorAccent">#ff7300</color>
     <color name="normal">#53ffffff</color>
     <color name="tombolhighlight">#fd9241</color>
     <color name="tombolnormal" >#f97d1f</color>
     <color name="lightgray">#ededed</color>
     <color name="iron">#CCCCCC</color>
+    <color name="warnabantu">#27ae19</color>
+    <color name="warnakeluar">#dc0e0e</color>
 </resources>
