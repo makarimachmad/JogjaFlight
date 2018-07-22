@@ -1,4 +1,4 @@
-package com.example.witono.jogjaflight;
+package com.example.witono.jogjaflight.view;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -8,28 +8,41 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.witono.jogjaflight.BaseApp;
+import com.example.witono.jogjaflight.R;
+import com.example.witono.jogjaflight.di.InjectableActivity;
+import com.example.witono.jogjaflight.interfaces.LoginInterface;
+import com.example.witono.jogjaflight.network.SiakadService;
+import com.example.witono.jogjaflight.presenter.LoginPresenter;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseApp implements LoginInterface,InjectableActivity{
 
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
+    @Inject
+     public SiakadService siakadService;
 
     @BindView(R.id.input_email)
     EditText _emailText;
     @BindView(R.id.input_password) EditText _passwordText;
     @BindView(R.id.btn_login) Button _loginButton;
-
+    private LoginPresenter presenter;
+    private ProgressDialog progressDialog;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getDeps().inject(this);
         setContentView(R.layout.activity_login);
-        ButterKnife.bind(this);
 
+        ButterKnife.bind(this);
+        presenter = new LoginPresenter(this, siakadService);
         _loginButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -37,6 +50,8 @@ public class LoginActivity extends AppCompatActivity {
                 login();
             }
         });
+        progressDialog = new ProgressDialog(LoginActivity.this,
+                R.style.AppTheme_Dark_Dialog);
 
     }
 
@@ -44,32 +59,35 @@ public class LoginActivity extends AppCompatActivity {
         Log.d(TAG, "Login");
 
         if (!validate()) {
-            onLoginFailed();
+            Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+            _loginButton.setEnabled(true);
             return;
         }
 
         _loginButton.setEnabled(false);
 
-        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
-                R.style.AppTheme_Dark_Dialog);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Authenticating...");
-        progressDialog.show();
+
+
 
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
+        Log.d(TAG,email);
 
         // TODO: Implement your own authentication logic here.
 
-        new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        // On complete call either onLoginSuccess or onLoginFailed
-                        onLoginSuccess();
-                        // onLoginFailed();
-                        progressDialog.dismiss();
-                    }
-                }, 3000);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Authenticating...");
+        progressDialog.show();
+      presenter.login(email,password);
+//        new android.os.Handler().postDelayed(
+//                new Runnable() {
+//                    public void run() {
+//                        // On complete call either onLoginSuccess or onLoginFailed
+//                        onLoginSuccess();
+//                        // onLoginFailed();
+//                        progressDialog.dismiss();
+//                    }
+//                }, 3000);
     }
 
 
@@ -91,16 +109,9 @@ public class LoginActivity extends AppCompatActivity {
         moveTaskToBack(true);
     }
 
-    public void onLoginSuccess() {
-        _loginButton.setEnabled(true);
-        finish();
-    }
 
-    public void onLoginFailed() {
-        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
 
-        _loginButton.setEnabled(true);
-    }
+
 
     public boolean validate() {
         boolean valid = true;
@@ -108,7 +119,7 @@ public class LoginActivity extends AppCompatActivity {
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
 
-        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        if (email.isEmpty()) {
             _emailText.setError("enter a valid email address");
             valid = false;
         } else {
@@ -125,11 +136,19 @@ public class LoginActivity extends AppCompatActivity {
         return valid;
     }
 
+    @Override
+    public void onLoginSucces(String messages) {
+        progressDialog.dismiss();
+        _loginButton.setEnabled(true);
+        finish();
+    }
 
-/*    public void tombol_login(View view){
+    @Override
+    public void onLoginFailure(String messages) {
+        progressDialog.dismiss();
+        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+        _loginButton.setEnabled(true);
+    }
 
-        Intent intents = new Intent(LoginActivity.this,MainActivity.class);
-        startActivity(intents);
 
-    }*/
 }
