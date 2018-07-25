@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".view.ProfileActivity"
+    tools:showIn="@layout/activity_profile"
+    android:layout_marginTop="60sp">
+
+    <Button
+        android:id="@+id/tombolbantu"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_margin="20sp"
+        android:text="@string/bantu"
+        android:textColor="@color/colorPrimary"
+        android:background="@drawable/warna_tombolbantuan"
+        style="@style/Widget.AppCompat.Button.Borderless"/>
+
+    <Button
+        app:layout_constraintTop_toBottomOf="@id/tombolbantu"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_margin="20sp"
+        android:text="@string/keluar"
+        android:textColor="@color/colorPrimary"
+        android:background="@drawable/warna_tombolkeluar"
+        style="@style/Widget.AppCompat.Button.Borderless"/>
+
+
+</android.support.constraint.ConstraintLayout>
