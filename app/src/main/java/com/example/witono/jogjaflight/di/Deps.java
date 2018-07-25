@@ -1,6 +1,5 @@
 package com.example.witono.jogjaflight.di;
 
-import com.example.witono.jogjaflight.BaseApp;
 import com.example.witono.jogjaflight.network.NetworkModule;
 import com.example.witono.jogjaflight.view.LoginActivity;
 

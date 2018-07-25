@@ -2,7 +2,6 @@ package com.example.witono.jogjaflight.view;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,7 +26,7 @@ public class LoginActivity extends BaseApp implements LoginInterface,InjectableA
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
     @Inject
-     public SiakadService siakadService;
+    public SiakadService siakadService;
 
     @BindView(R.id.input_email)
     EditText _emailText;
@@ -35,11 +34,14 @@ public class LoginActivity extends BaseApp implements LoginInterface,InjectableA
     @BindView(R.id.btn_login) Button _loginButton;
     private LoginPresenter presenter;
     private ProgressDialog progressDialog;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getDeps().inject(this);
         setContentView(R.layout.activity_login);
+
 
         ButterKnife.bind(this);
         presenter = new LoginPresenter(this, siakadService);
@@ -65,8 +67,6 @@ public class LoginActivity extends BaseApp implements LoginInterface,InjectableA
         }
 
         _loginButton.setEnabled(false);
-
-
 
 
         String email = _emailText.getText().toString();
@@ -110,9 +110,6 @@ public class LoginActivity extends BaseApp implements LoginInterface,InjectableA
     }
 
 
-
-
-
     public boolean validate() {
         boolean valid = true;
 
@@ -140,6 +137,10 @@ public class LoginActivity extends BaseApp implements LoginInterface,InjectableA
     public void onLoginSucces(String messages) {
         progressDialog.dismiss();
         _loginButton.setEnabled(true);
+
+        //one time login
+
+
         finish();
     }
 
