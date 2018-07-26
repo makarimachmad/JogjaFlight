@@ -1,8 +1,11 @@
 package com.example.witono.jogjaflight.view;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,13 +18,14 @@ public class MainActivity extends AppCompatActivity {
 
     CarouselView carouselView;
     int[] sampleImages = {R.drawable.image_1, R.drawable.image_2, R.drawable.image_3, R.drawable.image_4, R.drawable.image_5};
+    //private Toolbar toolbar;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
 
         carouselView = findViewById(R.id.carouselView);
@@ -32,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setLogo(R.drawable.pekanbarulogo);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
+
 
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
@@ -45,20 +50,29 @@ public class MainActivity extends AppCompatActivity {
     };
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-
-            case R.id.action_favorite:
-                Intent intents = new Intent(MainActivity.this,ProfileActivity.class);
-                return true;
-
-            default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
-                return super.onOptionsItemSelected(item);
-
-        }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_favorite) {
+            Intent intents = new Intent(MainActivity.this,ProfileActivity.class);
+            startActivity(intents);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
     public void tombolabsensi(View view){
         Intent intents = new Intent(MainActivity.this,AbsensiActivity.class);

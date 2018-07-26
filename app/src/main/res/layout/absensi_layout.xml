@@ -6,6 +6,7 @@
     android:padding="20sp"
     tools:context=".view.AbsensiActivity">
 
+
     <Spinner
         android:id="@+id/simpleSpinner"
         android:layout_width="200sp"
