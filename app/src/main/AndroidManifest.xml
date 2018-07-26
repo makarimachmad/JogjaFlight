@@ -23,23 +23,34 @@
         </activity>
         <activity
             android:name=".view.LoginActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".view.AbsensiActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".view.MataKuliahActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".view.JadwalActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".view.NilaiActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".view.ProfileActivity"
-            android:theme="@style/AppTheme"></activity>
-
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".view.PembayaranActivity"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".view.PelanggaranActivity"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".view.PengalamanActivity"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".view.NilaiPerformaActivity"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

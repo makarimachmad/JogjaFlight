@@ -37,7 +37,6 @@
 
     </style>
 
-
         <style name="HeaderBar">
             <item name="android:background">#303F9F</item>
         </style>

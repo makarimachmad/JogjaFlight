@@ -90,4 +90,20 @@ public class MainActivity extends AppCompatActivity {
         Intent intents = new Intent(MainActivity.this,MataKuliahActivity.class);
         startActivity(intents);
     }
+    public void tombolnilai_performa(View view){
+        Intent intents = new Intent(MainActivity.this,AbsensiActivity.class);
+        startActivity(intents);
+    }
+    public void tombol_pelanggaran(View view){
+        Intent intents = new Intent(MainActivity.this,JadwalActivity.class);
+        startActivity(intents);
+    }
+    public void tombol_pembayaran(View view){
+        Intent intents = new Intent(MainActivity.this,NilaiActivity.class);
+        startActivity(intents);
+    }
+    public void tombol_pengalaman(View view){
+        Intent intents = new Intent(MainActivity.this,MataKuliahActivity.class);
+        startActivity(intents);
+    }
 }

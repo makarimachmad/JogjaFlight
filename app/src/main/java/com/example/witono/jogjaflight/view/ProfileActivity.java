@@ -15,8 +15,8 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         TextView jurusan= findViewById(R.id.jurusan_profil);
-        TextView nim= findViewById(R.id.jurusan_profil);
-        TextView nama= findViewById(R.id.jurusan_profil);
+        TextView nim= findViewById(R.id.nim_profil);
+        TextView nama= findViewById(R.id.nama_profil);
 
         nama.setText("Abcdefg Hijklmn Opqrstu");
         nim.setText("123160000");

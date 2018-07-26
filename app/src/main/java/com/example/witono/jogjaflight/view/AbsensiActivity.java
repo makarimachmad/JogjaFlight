@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.witono.jogjaflight.R;
 
@@ -13,20 +14,25 @@ public class AbsensiActivity extends AppCompatActivity implements AdapterView.On
 
 
     String[] countryNames={"Term 1","Term 2","Term 3"};
+    TextView judul;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.absensi_layout);
+        setContentView(R.layout.spinner_layout);
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.drawable.pekanbarulogo);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
 
+        judul= findViewById(R.id.judulhalaman);
+        judul.setText("Absensi Siswa");
+
         Spinner spin = (Spinner) findViewById(R.id.simpleSpinner);
         spin.setOnItemSelectedListener(this);
 
-        CustomAdapter_JadwalActivity customAdapter=new CustomAdapter_JadwalActivity(getApplicationContext(),countryNames);
+        CustomAdapter_Spinner customAdapter=new CustomAdapter_Spinner(getApplicationContext(),countryNames);
         spin.setAdapter(customAdapter);
     }
 

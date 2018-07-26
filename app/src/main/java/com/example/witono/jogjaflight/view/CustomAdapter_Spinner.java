@@ -7,24 +7,23 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.witono.jogjaflight.BaseApp;
 import com.example.witono.jogjaflight.R;
 
-public class CustomAdapter_JadwalActivity extends BaseAdapter {
+public class CustomAdapter_Spinner extends BaseAdapter {
     Context context;
-    String[] countryNames;
+    String[] variabelTerm;
     LayoutInflater inflter;
 
-    public CustomAdapter_JadwalActivity(Context applicationContext, String[] countryNames) {
+    public CustomAdapter_Spinner(Context applicationContext, String[] variabelTerm) {
         this.context = applicationContext;
 
-        this.countryNames = countryNames;
+        this.variabelTerm = variabelTerm;
         inflter = (LayoutInflater.from(applicationContext));
     }
 
     @Override
     public int getCount() {
-        return countryNames.length;
+        return variabelTerm.length;
     }
 
     @Override
@@ -41,7 +40,7 @@ public class CustomAdapter_JadwalActivity extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         view = inflter.inflate(R.layout.custom_spinner_item, null);
         TextView names = (TextView) view.findViewById(R.id.textView);
-        names.setText(countryNames[i]);
+        names.setText(variabelTerm[i]);
         return view;
     }
 }
