@@ -37,9 +37,14 @@
 
     </style>
 
-        <style name="HeaderBar">
-            <item name="android:background">#303F9F</item>
-        </style>
+    <style name="HeaderBar">
+        <item name="android:background">#303F9F</item>
+    </style>
 
+    <style name="MySerifBold" parent="TextAppearance.AppCompat.Large">
+        <item name="android:textStyle">bold</item>
+        <item name="android:typeface">sans</item>
+        <item name="android:textColor">@color/tombolnormal</item>
+    </style>
 
 </resources>

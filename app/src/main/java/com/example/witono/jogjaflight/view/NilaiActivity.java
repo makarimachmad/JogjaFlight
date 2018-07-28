@@ -28,6 +28,9 @@ public class NilaiActivity extends AppCompatActivity implements AdapterView.OnIt
         judul= findViewById(R.id.judulhalaman);
         judul.setText("Dafrar Nilai");
 
+//        Typeface font = Typeface.createFromAsset(getAssets(), "Strato-linked.ttf");
+//        ((TextView)findViewById(R.id.judulhalaman)).setTypeface(font);
+
         Spinner spin = (Spinner) findViewById(R.id.simpleSpinner);
         spin.setOnItemSelectedListener(this);
 

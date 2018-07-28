@@ -20,6 +20,9 @@ public class PembayaranActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayUseLogoEnabled(true);
 
         judul= findViewById(R.id.judulhalaman);
-        judul.setText("Status Pembayaran");
+        judul.setText("Riwayat Pembayaran");
+
+//        Typeface font = Typeface.createFromAsset(getAssets(), "Strato-linked.ttf");
+//        ((TextView)findViewById(R.id.judulhalaman)).setTypeface(font);
     }
 }

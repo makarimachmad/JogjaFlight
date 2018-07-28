@@ -26,7 +26,10 @@ public class JadwalActivity extends AppCompatActivity implements AdapterView.OnI
         getSupportActionBar().setDisplayUseLogoEnabled(true);
 
         judul= findViewById(R.id.judulhalaman);
-        judul.setText("Absensi Siswa");
+        judul.setText("Jadwal Siswa");
+
+//        Typeface font = Typeface.createFromAsset(getAssets(), "Strato-linked.ttf");
+//        ((TextView)findViewById(R.id.judulhalaman)).setTypeface(font);
 
         Spinner spin = (Spinner) findViewById(R.id.simpleSpinner);
         spin.setOnItemSelectedListener(this);

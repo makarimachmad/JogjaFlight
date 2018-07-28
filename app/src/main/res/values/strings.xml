@@ -14,4 +14,8 @@
     <string name="cari">Pencarian</string>
     <string name="bantu">Bantuan</string>
     <string name="keluar">Keluar</string>
+    <string name="pembayaran">Status Pembayaran</string>
+    <string name="pelanggaran">Daftar Pelanggaran</string>
+    <string name="pengalaman">Pengalaman</string>
+    <string name="performa">Nilai Performa</string>
 </resources>

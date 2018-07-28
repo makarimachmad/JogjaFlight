@@ -9,7 +9,7 @@
         android:id="@+id/judulhalaman"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        style="@style/MySerifBold"
         android:layout_centerHorizontal="true"/>
 
     <Spinner

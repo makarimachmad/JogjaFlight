@@ -21,5 +21,8 @@ public class PelanggaranActivity extends AppCompatActivity {
 
         judul= findViewById(R.id.judulhalaman);
         judul.setText("Catatan Pelanggaran");
+
+//        Typeface font = Typeface.createFromAsset(getAssets(), "Strato-linked.ttf");
+//        ((TextView)findViewById(R.id.judulhalaman)).setTypeface(font);
     }
 }

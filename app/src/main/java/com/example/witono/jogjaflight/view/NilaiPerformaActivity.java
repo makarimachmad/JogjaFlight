@@ -21,5 +21,8 @@ public class NilaiPerformaActivity extends AppCompatActivity {
 
         judul= findViewById(R.id.judulhalaman);
         judul.setText("Nilai Performa");
+
+//        Typeface font = Typeface.createFromAsset(getAssets(), "Strato-linked.ttf");
+//        ((TextView)findViewById(R.id.judulhalaman)).setTypeface(font);
     }
 }

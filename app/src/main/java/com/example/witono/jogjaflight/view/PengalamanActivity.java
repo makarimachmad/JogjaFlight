@@ -21,5 +21,8 @@ public class PengalamanActivity extends AppCompatActivity {
 
         judul= findViewById(R.id.judulhalaman);
         judul.setText("Pengalaman Siswa");
+
+//        Typeface font = Typeface.createFromAsset(getAssets(), "Strato-linked.ttf");
+//        ((TextView)findViewById(R.id.judulhalaman)).setTypeface(font);
     }
 }

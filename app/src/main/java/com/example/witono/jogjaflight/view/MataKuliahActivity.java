@@ -28,6 +28,9 @@ public class MataKuliahActivity extends AppCompatActivity implements AdapterView
         judul= findViewById(R.id.judulhalaman);
         judul.setText("Absensi Siswa");
 
+//        Typeface font = Typeface.createFromAsset(getAssets(), "Strato-linked.ttf");
+//        ((TextView)findViewById(R.id.judulhalaman)).setTypeface(font);
+
         Spinner spin = (Spinner) findViewById(R.id.simpleSpinner);
         spin.setOnItemSelectedListener(this);
 
