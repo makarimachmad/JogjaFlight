@@ -13,7 +13,7 @@ import com.example.witono.jogjaflight.R;
 public class MataKuliahActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
 
-    String[] countryNames={"Term 1","Term 2","Term 3"};
+    String[] countryNames={"Term 1","Term 2","Term 3","Term 4"};
     TextView judul;
 
     @Override
