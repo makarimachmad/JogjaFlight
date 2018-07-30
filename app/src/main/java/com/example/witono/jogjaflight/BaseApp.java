@@ -12,6 +12,8 @@ import com.example.witono.jogjaflight.network.NetworkModule;
 
 import java.io.File;
 
+import io.paperdb.Paper;
+
 public class BaseApp extends AppCompatActivity {
     Deps deps;
 
@@ -20,6 +22,7 @@ public class BaseApp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         File cacheFile = new File(getCacheDir(), "responses");
         deps = DaggerDeps.builder().networkModule(new NetworkModule(cacheFile)).build();
+        Paper.init(this);
 
     }
 

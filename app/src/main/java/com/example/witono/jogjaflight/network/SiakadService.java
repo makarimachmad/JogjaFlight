@@ -1,10 +1,14 @@
 package com.example.witono.jogjaflight.network;
 
+import com.example.witono.jogjaflight.model.Cabang;
 import com.example.witono.jogjaflight.model.CheckUserResponse;
 import com.example.witono.jogjaflight.model.LoginResponse;
 
+import java.util.List;
+
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 import rx.Observable;
 
@@ -17,5 +21,8 @@ public interface SiakadService {
     @FormUrlEncoded
     @POST("login")
     Observable<LoginResponse> login(@Field("username") String username, @Field("password") String password);
+
+    @GET("getListCabang")
+    Observable<List<Cabang>> getListCabang();
 
 }

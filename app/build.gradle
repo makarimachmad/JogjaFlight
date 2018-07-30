@@ -63,4 +63,7 @@ dependencies {
     annotationProcessor 'com.google.dagger:dagger-compiler:2.13'
     compileOnly 'javax.annotation:jsr250-api:1.0'
     compileOnly 'org.glassfish:javax.annotation:10.0-b28'
+
+    //paper db
+    implementation 'io.paperdb:paperdb:2.6'
 }

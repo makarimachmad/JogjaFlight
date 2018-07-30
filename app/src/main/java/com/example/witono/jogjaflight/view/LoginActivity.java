@@ -11,8 +11,10 @@ import android.widget.Toast;
 
 import com.example.witono.jogjaflight.BaseApp;
 import com.example.witono.jogjaflight.R;
+import com.example.witono.jogjaflight.common.Common;
 import com.example.witono.jogjaflight.di.InjectableActivity;
-import com.example.witono.jogjaflight.interfaces.LoginInterface;
+import com.example.witono.jogjaflight.interfaces.CallInterface;
+import com.example.witono.jogjaflight.model.LoginResponse;
 import com.example.witono.jogjaflight.network.SiakadService;
 import com.example.witono.jogjaflight.presenter.LoginPresenter;
 
@@ -20,8 +22,9 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.paperdb.Paper;
 
-public class LoginActivity extends BaseApp implements LoginInterface,InjectableActivity{
+public class LoginActivity extends BaseApp implements CallInterface,InjectableActivity{
 
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
@@ -39,6 +42,12 @@ public class LoginActivity extends BaseApp implements LoginInterface,InjectableA
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(Paper.exist("user") ){
+            LoginResponse l = Paper.book().read("user");
+            Common.User = l;
+            finish();
+
+        }
         getDeps().inject(this);
         setContentView(R.layout.activity_login);
 
@@ -134,10 +143,10 @@ public class LoginActivity extends BaseApp implements LoginInterface,InjectableA
     }
 
     @Override
-    public void onLoginSucces(String messages) {
+    public void onCallSucces(String messages) {
         progressDialog.dismiss();
         _loginButton.setEnabled(true);
-
+        Paper.book().write("user",Common.User);
         //one time login
 
 
@@ -145,7 +154,7 @@ public class LoginActivity extends BaseApp implements LoginInterface,InjectableA
     }
 
     @Override
-    public void onLoginFailure(String messages) {
+    public void onCallFailure(String messages) {
         progressDialog.dismiss();
         Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
         _loginButton.setEnabled(true);
