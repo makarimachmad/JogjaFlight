@@ -15,6 +15,7 @@ public class TabelActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabel);
+
     }
 
     @Override
@@ -23,6 +24,9 @@ public class TabelActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         TableLayout tablelayoutid = (TableLayout)this.findViewById(R.id.tablelayoutid);
         // Inflate your row "template" and fill out the fields.
+
+
+
         for(int i=0;i<3;i++){
             TableRow row = (TableRow)getLayoutInflater().inflate(R.layout.layout_row, null);
 

@@ -1,9 +1,13 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20sp"
-    tools:context="view.TabelActivity">
+    tools:context=".view.TabelActivity">
+
 
     <TextView
         android:id="@+id/judul_jadwaltabel"
@@ -16,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tablelayoutid"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="60dp">
 
         <TableRow
             android:id="@+id/rowlay"
@@ -54,4 +58,5 @@
                 android:text="Dosen Pengampu" />
         </TableRow>
     </TableLayout>
+
 </RelativeLayout>
