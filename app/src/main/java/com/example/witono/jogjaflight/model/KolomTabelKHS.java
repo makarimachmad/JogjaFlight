@@ -2,9 +2,9 @@ package com.example.witono.jogjaflight.model;
 
 // Data structure for invoices
 
-public class KolomTabelJadwal {
+public class KolomTabelKHS {
 
     public int id;
-    public int kode;
-    public String waktu,namamka, sks;
+    public String namamka, sks, grade;
+
 }

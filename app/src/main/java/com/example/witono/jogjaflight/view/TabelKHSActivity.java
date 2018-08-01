@@ -14,14 +14,14 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.witono.jogjaflight.R;
-import com.example.witono.jogjaflight.model.KolomTabelJadwal;
-import com.example.witono.jogjaflight.presenter.TabelJadwalPresenter;
+import com.example.witono.jogjaflight.model.KolomTabelKHS;
+import com.example.witono.jogjaflight.presenter.TabelKHSPresenter;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 
 
-public class TabelJadwalActivity extends AppCompatActivity {
+public class TabelKHSActivity extends AppCompatActivity {
     private TableLayout mTableLayout;
     ProgressDialog mProgressBar;
     @Override
@@ -56,8 +56,8 @@ public class TabelJadwalActivity extends AppCompatActivity {
         smallTextSize = (int) getResources().getDimension(R.dimen.font_size_small);
         mediumTextSize = (int) getResources().getDimension(R.dimen.font_size_medium);
 
-        TabelJadwalPresenter tabelJadalPresenter = new TabelJadwalPresenter();
-        KolomTabelJadwal[] data = tabelJadalPresenter.getInvoices();
+        TabelKHSPresenter tabelJadalPresenter = new TabelKHSPresenter();
+        KolomTabelKHS[] data = tabelJadalPresenter.getInvoices();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM, yyyy");
 
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
@@ -69,7 +69,7 @@ public class TabelJadwalActivity extends AppCompatActivity {
         // -1 means heading row
 
         for(int i = -1; i < rows; i ++) {
-            KolomTabelJadwal row = null;
+            KolomTabelKHS row = null;
             if (i > -1)
                 row = data[i];
             else {
@@ -88,16 +88,17 @@ public class TabelJadwalActivity extends AppCompatActivity {
             tv.setPadding(5, 15, 0, 15);
 
             if (i == -1) {
-                tv.setText("Kode");
+                tv.setText("Nama MataKUliah");
                 tv.setBackgroundColor(Color.parseColor("#f97d1f"));
                 tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, smallTextSize);
             } else {
                 tv.setBackgroundColor(Color.parseColor("#f8f8f8"));
-                tv.setText(String.valueOf(row.kode));
+                tv.setText(String.valueOf(row.namamka));
                 tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
             }
-            final TextView tv2 = new TextView(this);
 
+
+            final TextView tv2 = new TextView(this);
             if (i == -1) {
                 tv2.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
                         TableRow.LayoutParams.WRAP_CONTENT));
@@ -111,15 +112,16 @@ public class TabelJadwalActivity extends AppCompatActivity {
             tv2.setPadding(5, 15, 0, 15);
             if (i == -1) {
 
-                tv2.setText("MataKuliah");
+                tv2.setText("SKS");
                 tv2.setBackgroundColor(Color.parseColor("#fd9241"));
             }else {
                 tv2.setBackgroundColor(Color.parseColor("#ffffff"));
                 tv2.setTextColor(Color.parseColor("#000000"));
-                tv2.setText(row.namamka);
+                tv2.setText(row.sks);
             }
-            final LinearLayout layCustomer = new LinearLayout(this);
 
+
+            final LinearLayout layCustomer = new LinearLayout(this);
             layCustomer.setOrientation(LinearLayout.VERTICAL);
             layCustomer.setBackgroundColor(Color.parseColor("#f8f8f8"));
 
@@ -140,13 +142,13 @@ public class TabelJadwalActivity extends AppCompatActivity {
             tv3.setGravity(Gravity.CENTER);
             tv3.setPadding(5, 15, 0, 15);
             if (i == -1) {
-                tv3.setText("Waktu");
+                tv3.setText("Nilai");
                 tv3.setBackgroundColor(Color.parseColor("#f97d1f"));
             } else {
                 tv3.setBackgroundColor(Color.parseColor("#f8f8f8"));
                 tv3.setTextColor(Color.parseColor("#000000"));
                 tv3.setTextSize(TypedValue.COMPLEX_UNIT_PX, smallTextSize);
-                tv3.setText(row.waktu);
+                tv3.setText(row.grade);
 
             }
             layCustomer.addView(tv3);
@@ -161,50 +163,7 @@ public class TabelJadwalActivity extends AppCompatActivity {
                 tv3b.setBackgroundColor(Color.parseColor("#f8f8f8"));
                 layCustomer.addView(tv3b);
             }
-            final LinearLayout layAmounts = new LinearLayout(this);
 
-            layAmounts.setOrientation(LinearLayout.VERTICAL);
-            layAmounts.setGravity(Gravity.RIGHT);
-            layAmounts.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
-                    TableRow.LayoutParams.MATCH_PARENT));
-            final TextView tv4 = new TextView(this);
-            if (i == -1) {
-                tv4.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
-                        TableRow.LayoutParams.MATCH_PARENT));
-                tv4.setPadding(5, 5, 1, 5);
-                layAmounts.setBackgroundColor(Color.parseColor("#f7f7f7"));
-            } else {
-
-                tv4.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
-
-                        TableRow.LayoutParams.WRAP_CONTENT));
-                tv4.setPadding(5, 0, 1, 5);
-                layAmounts.setBackgroundColor(Color.parseColor("#ffffff"));
-            }
-            tv4.setGravity(Gravity.CENTER);
-            tv4.setPadding(5, 15, 0, 15);
-            if (i == -1) {
-                tv4.setText("SKS");
-                tv4.setBackgroundColor(Color.parseColor("#fd9241"));
-                tv4.setTextSize(TypedValue.COMPLEX_UNIT_PX, smallTextSize);
-            } else {
-                tv4.setBackgroundColor(Color.parseColor("#ffffff"));
-                tv4.setTextColor(Color.parseColor("#000000"));
-                tv4.setText(row.sks);
-                tv4.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
-            }
-            layAmounts.addView(tv4);
-            if (i > -1) {
-                final TextView tv4b = new TextView(this);
-                tv4b.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
-                        TableRow.LayoutParams.WRAP_CONTENT));
-                tv4b.setGravity(Gravity.RIGHT);
-                tv4b.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
-                tv4b.setPadding(2, 2, 1, 5);
-                tv4b.setTextColor(Color.parseColor("#00afff"));
-                tv4b.setBackgroundColor(Color.parseColor("#ffffff"));
-                layAmounts.addView(tv4b);
-            }
             // add table row
             final TableRow tr = new TableRow(this);
             tr.setId(i + 1);
@@ -216,7 +175,6 @@ public class TabelJadwalActivity extends AppCompatActivity {
             tr.addView(tv);
             tr.addView(tv2);
             tr.addView(layCustomer);
-            tr.addView(layAmounts);
 
             if (i > -1) {
                 tr.setOnClickListener(new View.OnClickListener() {
@@ -245,18 +203,15 @@ public class TabelJadwalActivity extends AppCompatActivity {
                 TableRow.LayoutParams tvSepLay = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT,
                         TableRow.LayoutParams.WRAP_CONTENT);
 
-                tvSepLay.span = 4;
+                tvSepLay.span = 3;
                 tvSep.setLayoutParams(tvSepLay);
                 tvSep.setBackgroundColor(Color.parseColor("#d9d9d9"));
                 tvSep.setHeight(1);
                 trSep.addView(tvSep);
 
                 mTableLayout.addView(trSep, trParamsSep);
-
             }
-
         }
-
     }
 
     class LoadDataTask extends AsyncTask<Integer, Integer, String> {

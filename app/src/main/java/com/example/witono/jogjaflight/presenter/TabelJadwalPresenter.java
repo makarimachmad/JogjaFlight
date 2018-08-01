@@ -2,9 +2,6 @@ package com.example.witono.jogjaflight.presenter;
 
 import com.example.witono.jogjaflight.model.KolomTabelJadwal;
 
-import java.math.BigDecimal;
-import java.util.Date;
-
 /**
  07
  * Created by amit on 1/5/16.
@@ -21,8 +18,8 @@ public class TabelJadwalPresenter {
             KolomTabelJadwal row = new KolomTabelJadwal();
             row.id = (i+1);
             row.kode = row.id;
-            row.SKS = BigDecimal.valueOf(120.00 * (i+1));
-            row.invoiceDate = new Date();
+            row.sks = "3";
+            row.namamka ="ABCDEFGH";
             row.waktu =  "08:00-09:00";
             data[i] = row;
         }
