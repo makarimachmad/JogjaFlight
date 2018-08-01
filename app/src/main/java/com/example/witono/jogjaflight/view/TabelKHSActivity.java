@@ -120,7 +120,6 @@ public class TabelKHSActivity extends AppCompatActivity {
                 tv2.setText(row.sks);
             }
 
-
             final LinearLayout layCustomer = new LinearLayout(this);
             layCustomer.setOrientation(LinearLayout.VERTICAL);
             layCustomer.setBackgroundColor(Color.parseColor("#f8f8f8"));

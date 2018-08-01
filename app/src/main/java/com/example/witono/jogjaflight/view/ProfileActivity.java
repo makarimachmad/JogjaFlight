@@ -76,6 +76,11 @@ public class ProfileActivity extends BaseApp implements CallInterface {
         });*/
     }
 
+    public void tombolkeluar(View view){
+        Paper.book().delete("cabang");
+        Intent intent= new Intent(this,LoginActivity.class);
+        startActivity(intent); finishAffinity();
+    }
     public void tombolbantu(View view){
         sendEmail();
     }
