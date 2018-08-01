@@ -47,7 +47,7 @@ public class PengalamanActivity extends AppCompatActivity {
                         pencarian.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Intent intent = new Intent(PengalamanActivity.this, TabelActivity.class);
+                                Intent intent = new Intent(PengalamanActivity.this, TabelJadwalActivity.class);
                                 startActivity(intent);
 
                             }

@@ -16,6 +16,7 @@ public class JadwalActivity extends AppCompatActivity{
 
     String[] variabelTerm={"Term 1","Term 2","Term 3","Term 4"};
     TextView judul,judultablejadwal;
+    String judulterm="";
 
 
     @Override
@@ -31,10 +32,12 @@ public class JadwalActivity extends AppCompatActivity{
         judul.setText("Jadwal Siswa");
 
 
+
 //        Typeface font = Typeface.createFromAsset(getAssets(), "Strato-linked.ttf");
 //        ((TextView)findViewById(R.id.judulhalaman)).setTypeface(font);
 
         Spinner spin = (Spinner) findViewById(R.id.simpleSpinner);
+
 
         CustomAdapter_Spinner customAdapter=new CustomAdapter_Spinner(getApplicationContext(),variabelTerm);
         spin.setAdapter(customAdapter);
@@ -50,7 +53,8 @@ public class JadwalActivity extends AppCompatActivity{
                         pencarian.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Intent intent = new Intent(JadwalActivity.this, TabelActivity.class);
+
+                                Intent intent = new Intent(JadwalActivity.this, TabelJadwalActivity.class);
                                 startActivity(intent);
 
                             }
@@ -58,6 +62,18 @@ public class JadwalActivity extends AppCompatActivity{
                         break;
 
                     case 1:
+                        pencarian.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                judulterm="Term 2";
+                                Intent intent = new Intent(JadwalActivity.this, TabelJadwalActivity.class);
+                                startActivity(intent);
+                                setContentView(R.layout.halamankosong);
+                            }
+                        });
+                        break;
+
+                    case 2:
                         pencarian.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {

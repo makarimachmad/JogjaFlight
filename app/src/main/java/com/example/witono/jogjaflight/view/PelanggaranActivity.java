@@ -47,7 +47,7 @@ public class PelanggaranActivity extends AppCompatActivity {
                         pencarian.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Intent intent = new Intent(PelanggaranActivity.this, TabelActivity.class);
+                                Intent intent = new Intent(PelanggaranActivity.this, TabelJadwalActivity.class);
                                 startActivity(intent);
 
                             }

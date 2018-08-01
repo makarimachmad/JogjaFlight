@@ -48,7 +48,7 @@ public class NilaiPerformaActivity extends AppCompatActivity {
                         pencarian.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Intent intent = new Intent(NilaiPerformaActivity.this, TabelActivity.class);
+                                Intent intent = new Intent(NilaiPerformaActivity.this, TabelJadwalActivity.class);
                                 startActivity(intent);
 
                             }
