@@ -58,9 +58,6 @@
         <activity
             android:name=".view.TabelKHSActivity"
             android:theme="@style/AppTheme" />
-
-        <activity android:name=".view.GambarBeritaActivity"></activity>
-
     </application>
 
 </manifest>
