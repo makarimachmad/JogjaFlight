@@ -3,27 +3,29 @@ package com.example.witono.jogjaflight.presenter;
 import com.example.witono.jogjaflight.common.Common;
 import com.example.witono.jogjaflight.interfaces.CallInterface;
 import com.example.witono.jogjaflight.model.Cabang;
-import com.example.witono.jogjaflight.network.SiakadService;
+
 import com.example.witono.jogjaflight.repository.SiakadRepository;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.paperdb.Paper;
 import rx.Observer;
-import rx.Scheduler;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class ProfilePresenter {
-    private SiakadService mService;
+
     private Cabang cabang;
     private CallInterface profileView;
-    private SiakadRepository repository;
+    public SiakadRepository repository;
 
-    public ProfilePresenter(SiakadService service, CallInterface callInterface ){
-        this.mService = service;
+    public ProfilePresenter( CallInterface callInterface, SiakadRepository repository){
+
         this.profileView = callInterface;
-        repository = new SiakadRepository(mService);
+        this.repository = repository;
+
     }
 
 

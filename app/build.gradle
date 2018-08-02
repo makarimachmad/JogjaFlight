@@ -11,8 +11,10 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         buildConfigField "int", "LIMIT", "100"
-        buildConfigField "String", "BASEURL", "\"http://siakad.kusumamahardika.co.id/api/\""
+        buildConfigField "String", "BASEURL", "\"http://siakad.kusumamahardika.co.id/\""
         buildConfigField "int", "CACHETIME", "432000" // 5days
+        buildConfigField "String", "API_KEY", "\"9e60b30d966ae548893cbc2764d2330d\""
+        buildConfigField "String", "KATEGORI_JADWAL", "\"Jadwal\""
     }
     buildTypes {
         release {

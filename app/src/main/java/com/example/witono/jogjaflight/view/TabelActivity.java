@@ -7,22 +7,50 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.example.witono.jogjaflight.BaseApp;
 import com.example.witono.jogjaflight.R;
+import com.example.witono.jogjaflight.common.Common;
+import com.example.witono.jogjaflight.interfaces.TableCall;
+import com.example.witono.jogjaflight.model.Jadwal;
+import com.example.witono.jogjaflight.presenter.TablePresenter;
+import com.example.witono.jogjaflight.repository.SiakadRepository;
 
-public class TabelActivity extends AppCompatActivity {
+import java.util.List;
 
+import javax.inject.Inject;
+
+public class TabelActivity extends BaseApp implements TableCall {
+
+    private  TableLayout tablelayoutid;
+
+    @Inject
+    public SiakadRepository repository;
+    private TablePresenter mPresenter;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getDeps().inject(this);
         setContentView(R.layout.activity_tabel);
+        int term =1;
+        mPresenter = new TablePresenter(this,repository);
+        mPresenter.getTable(2016,term,Common.User.getUsername());
+       tablelayoutid = (TableLayout)this.findViewById(R.id.tablelayoutid);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        TableLayout tablelayoutid = (TableLayout)this.findViewById(R.id.tablelayoutid);
+
         // Inflate your row "template" and fill out the fields.
+
+        return true;
+    }
+
+
+    @Override
+    public void onSucces(List<Jadwal> data) {
+
         for(int i=0;i<3;i++){
             TableRow row = (TableRow)getLayoutInflater().inflate(R.layout.layout_row, null);
 
@@ -32,15 +60,18 @@ public class TabelActivity extends AppCompatActivity {
             TextView text_sks   =(TextView)row.findViewById(R.id.id_sks);
             TextView text_dosen   =(TextView)row.findViewById(R.id.id_dosen);
 
-            text_kode.setText(i+"");
-            text_mka.setText("abcdefgh");
-            text_waktu.setText("senin, 10:00-12:00");
-            text_sks.setText("3");
-            text_dosen.setText("raffi ahmad");
+            text_kode.setText(i+1+"");
+            text_mka.setText(data.get(i).getNama_makul());
+            text_waktu.setText(data.get(i).getJam_mulai());
+            text_sks.setText(data.get(i).getSks());
+            text_dosen.setText(data.get(i).getNama_lengkap());
             tablelayoutid.addView(row);
         }
-        return true;
+
     }
 
+    @Override
+    public void onFailure(String messages) {
 
+    }
 }

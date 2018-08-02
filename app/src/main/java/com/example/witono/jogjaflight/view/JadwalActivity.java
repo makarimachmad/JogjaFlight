@@ -17,6 +17,7 @@ public class JadwalActivity extends AppCompatActivity{
     String[] variabelTerm={"Term 1","Term 2","Term 3","Term 4"};
     TextView judul,judultablejadwal;
     Button pencarian;
+    private int term;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,24 +42,12 @@ public class JadwalActivity extends AppCompatActivity{
 
         pencarian = findViewById(R.id.tombolcariin);
 
-        CustomAdapter_Spinner customAdapter=new CustomAdapter_Spinner(getApplicationContext(),variabelTerm);
-        spin.setAdapter(customAdapter);
+
 
         spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch (position) {
-
-                    case 0: // for item 1
-                        Intent intent = new Intent(JadwalActivity.this, TabelActivity.class);
-                        startActivity(intent);
-                        break;
-
-                    case 1:
-                        setContentView(R.layout.halamankosong);
-                        break;
-
-                }
+                term = position+1;
             }
 
             @Override
@@ -67,10 +56,13 @@ public class JadwalActivity extends AppCompatActivity{
             }
         });
 
+        CustomAdapter_Spinner customAdapter=new CustomAdapter_Spinner(getApplicationContext(),variabelTerm);
+        spin.setAdapter(customAdapter);
+
     }
 
     public void tombolcari(View view){
-        Intent intents = new Intent(JadwalActivity.this,AbsensiActivity.class);
+        Intent intents = new Intent(JadwalActivity.this,TabelActivity.class);
         startActivity(intents);
     }
 }

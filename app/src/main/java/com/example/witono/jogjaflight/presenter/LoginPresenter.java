@@ -20,7 +20,7 @@ public class LoginPresenter {
     }
 
     public void onFailureResponse(String messages){
-        view.onCallSucces(messages);
+        view.onCallFailure(messages);
     }
 
     public void onSuccesResponse(String messages){

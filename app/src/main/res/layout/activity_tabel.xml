@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20sp"
+    android:layout_margin="5dp"
     tools:context="view.TabelActivity">
 
     <TextView
@@ -12,46 +12,51 @@
         style="@style/MySerifBold"
         android:layout_centerHorizontal="true"/>
 
-    <TableLayout
+    <HorizontalScrollView
+        android:fillViewport="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tablelayoutid"
-        android:layout_marginTop="40dp">
+        android:layout_height="wrap_content">
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tablelayoutid"
+            android:layout_marginTop="40dp">
 
-        <TableRow
-            android:id="@+id/rowlay"
-            android:background="@color/tombolhighlight"
-            android:padding="5dp">
-            <TextView
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:text="kode" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:text="Nama MataKuliah" />
-            <TextView
-                android:layout_width="40dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:text="Waktu" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:text="Jumlah SKS" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:text="Dosen Pengampu" />
-        </TableRow>
-    </TableLayout>
+            <TableRow
+                android:id="@+id/rowlay"
+                android:background="@color/tombolhighlight"
+                android:padding="5dp">
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:text="kode" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:text="Nama MataKuliah" />
+                <TextView
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:text="Waktu" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:text="Jumlah SKS" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:text="Dosen Pengampu" />
+            </TableRow>
+        </TableLayout>
+    </HorizontalScrollView>
 </RelativeLayout>

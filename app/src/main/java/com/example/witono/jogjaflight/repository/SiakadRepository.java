@@ -1,7 +1,9 @@
 package com.example.witono.jogjaflight.repository;
 
+import com.example.witono.jogjaflight.BuildConfig;
 import com.example.witono.jogjaflight.common.Common;
 import com.example.witono.jogjaflight.model.Cabang;
+import com.example.witono.jogjaflight.model.Jadwal;
 import com.example.witono.jogjaflight.model.LoginResponse;
 import com.example.witono.jogjaflight.network.SiakadService;
 import com.example.witono.jogjaflight.presenter.LoginPresenter;
@@ -63,5 +65,11 @@ public class SiakadRepository {
         return siakadService.getListCabang();
     }
 
+
+    public Observable<List<Jadwal>> getJadwal(int tahun, int term, String nim){
+
+        return siakadService.getJadwalMhs("9e60b30d966ae548893cbc2764d2330d",BuildConfig.KATEGORI_JADWAL,tahun,term,nim);
+
+    }
 
 }

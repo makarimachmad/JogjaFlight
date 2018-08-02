@@ -15,6 +15,7 @@ import com.example.witono.jogjaflight.interfaces.CallInterface;
 import com.example.witono.jogjaflight.model.Cabang;
 import com.example.witono.jogjaflight.network.SiakadService;
 import com.example.witono.jogjaflight.presenter.ProfilePresenter;
+import com.example.witono.jogjaflight.repository.SiakadRepository;
 
 import java.util.List;
 
@@ -28,13 +29,13 @@ public class ProfileActivity extends BaseApp implements CallInterface {
     private Button keluar;
     private ProfilePresenter mPresenter;
     @Inject
-    public SiakadService siakadService;
+    SiakadRepository repository;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         getDeps().inject(this);
-        mPresenter = new ProfilePresenter(siakadService,this);
+        mPresenter = new ProfilePresenter(this,repository);
 
 
          jurusan= findViewById(R.id.jurusan_profil);
@@ -68,8 +69,9 @@ public class ProfileActivity extends BaseApp implements CallInterface {
         keluar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Paper.book().delete("cabang");
-                //startActivity(new Intent(ProfileActivity.this,LoginActivity.class));
+                Paper.book().delete("user");
+                startActivity(new Intent(ProfileActivity.this,LoginActivity.class));
+                finish();
             }
         });
     }
