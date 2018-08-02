@@ -44,7 +44,7 @@ public class TabelJadwalActivity extends BaseApp implements TableCall {
         setContentView(R.layout.layout_row);
         getDeps().inject(this);
         int term = getIntent().getIntExtra("term",1);
-        int tahun = Integer.valueOf("20"+Common.User.getUsername().substring(3,4));
+        int tahun = Integer.valueOf("20"+Common.User.getUsername().substring(3,5));
         presenter = new TablePresenter(this,siakad);
         presenter.getTable(tahun,term,Common.User.getUsername());
 
