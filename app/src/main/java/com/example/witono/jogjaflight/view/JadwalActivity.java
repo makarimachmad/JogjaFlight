@@ -51,44 +51,6 @@ public class JadwalActivity extends AppCompatActivity{
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                term = position+1;
 
-                switch (position) {
-
-                    case 0: // for item 1
-
-                        pencarian.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-
-                                Intent intent = new Intent(JadwalActivity.this, TabelJadwalActivity.class);
-                                startActivity(intent);
-
-                            }
-                        });
-                        break;
-
-                    case 1:
-                        pencarian.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                judulterm="Term 2";
-                                Intent intent = new Intent(JadwalActivity.this, TabelJadwalActivity.class);
-                                startActivity(intent);
-                                setContentView(R.layout.halamankosong);
-                            }
-                        });
-                        break;
-
-                    case 2:
-                        pencarian.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                setContentView(R.layout.halamankosong);
-                            }
-                        });
-                        break;
-
-                }
-
             }
 
             @Override
@@ -104,7 +66,8 @@ public class JadwalActivity extends AppCompatActivity{
 
 
     public void tombolcari(View view){
-        Intent intents = new Intent(JadwalActivity.this,TabelActivity.class);
+        Intent intents = new Intent(JadwalActivity.this,TabelJadwalActivity.class);
+        intents.putExtra("term",term);
         startActivity(intents);
     }
 

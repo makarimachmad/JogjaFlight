@@ -12,23 +12,42 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.witono.jogjaflight.BaseApp;
 import com.example.witono.jogjaflight.R;
+import com.example.witono.jogjaflight.common.Common;
+import com.example.witono.jogjaflight.interfaces.TableCall;
+import com.example.witono.jogjaflight.model.Jadwal;
 import com.example.witono.jogjaflight.model.KolomTabelJadwal;
 import com.example.witono.jogjaflight.presenter.TabelJadwalPresenter;
+import com.example.witono.jogjaflight.presenter.TablePresenter;
+import com.example.witono.jogjaflight.repository.SiakadRepository;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.List;
+
+import javax.inject.Inject;
 
 
-public class TabelJadwalActivity extends AppCompatActivity {
+public class TabelJadwalActivity extends BaseApp implements TableCall {
     private TableLayout mTableLayout;
+    private TablePresenter presenter;
+    @Inject
+    public SiakadRepository siakad;
     ProgressDialog mProgressBar;
     @Override
 
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_row);
+        getDeps().inject(this);
+        int term = getIntent().getIntExtra("term",1);
+        int tahun = Integer.valueOf("20"+Common.User.getUsername().substring(3,4));
+        presenter = new TablePresenter(this,siakad);
+        presenter.getTable(tahun,term,Common.User.getUsername());
+
 
         mProgressBar = new ProgressDialog(this);
 
@@ -37,15 +56,16 @@ public class TabelJadwalActivity extends AppCompatActivity {
         mTableLayout = (TableLayout) findViewById(R.id.tableInvoices);
         mTableLayout.setStretchAllColumns(true);
         startLoadData();
+
+        presenter.getTable(2018,1,Common.User.getId_users());
     }
     public void startLoadData() {
-        mProgressBar.setCancelable(false);
         mProgressBar.setMessage("Menampilkan..");
         mProgressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         mProgressBar.show();
-        new LoadDataTask().execute(0);
+
     }
-    public void loadData() {
+    public void loadData(List<Jadwal> data) {
         int leftRowMargin=0;
         int topRowMargin=0;
         int rightRowMargin=0;
@@ -57,11 +77,11 @@ public class TabelJadwalActivity extends AppCompatActivity {
         mediumTextSize = (int) getResources().getDimension(R.dimen.font_size_medium);
 
         TabelJadwalPresenter tabelJadalPresenter = new TabelJadwalPresenter();
-        KolomTabelJadwal[] data = tabelJadalPresenter.getInvoices();
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM, yyyy");
 
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
-        int rows = data.length;
+        int rows = data.size();
 
 
         TextView textSpacer = null;
@@ -69,9 +89,9 @@ public class TabelJadwalActivity extends AppCompatActivity {
         // -1 means heading row
 
         for(int i = -1; i < rows; i ++) {
-            KolomTabelJadwal row = null;
+            Jadwal row = null;
             if (i > -1)
-                row = data[i];
+                row = data.get(i);
             else {
                 textSpacer = new TextView(this);
                 textSpacer.setText("");
@@ -93,7 +113,7 @@ public class TabelJadwalActivity extends AppCompatActivity {
                 tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, smallTextSize);
             } else {
                 tv.setBackgroundColor(Color.parseColor("#f8f8f8"));
-                tv.setText(String.valueOf(row.kode));
+                tv.setText(String.valueOf(row.getKode_makul()));
                 tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
             }
             final TextView tv2 = new TextView(this);
@@ -116,7 +136,7 @@ public class TabelJadwalActivity extends AppCompatActivity {
             }else {
                 tv2.setBackgroundColor(Color.parseColor("#ffffff"));
                 tv2.setTextColor(Color.parseColor("#000000"));
-                tv2.setText(row.namamka);
+                tv2.setText(row.getNama_makul());
             }
             final LinearLayout layCustomer = new LinearLayout(this);
 
@@ -146,7 +166,7 @@ public class TabelJadwalActivity extends AppCompatActivity {
                 tv3.setBackgroundColor(Color.parseColor("#f8f8f8"));
                 tv3.setTextColor(Color.parseColor("#000000"));
                 tv3.setTextSize(TypedValue.COMPLEX_UNIT_PX, smallTextSize);
-                tv3.setText(row.waktu);
+                tv3.setText(row.getJam_mulai());
 
             }
             layCustomer.addView(tv3);
@@ -190,7 +210,7 @@ public class TabelJadwalActivity extends AppCompatActivity {
             } else {
                 tv4.setBackgroundColor(Color.parseColor("#ffffff"));
                 tv4.setTextColor(Color.parseColor("#000000"));
-                tv4.setText(row.sks);
+                tv4.setText(row.getSks());
                 tv4.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
             }
             layAmounts.addView(tv4);
@@ -259,30 +279,18 @@ public class TabelJadwalActivity extends AppCompatActivity {
 
     }
 
-    class LoadDataTask extends AsyncTask<Integer, Integer, String> {
 
-        @Override
+    @Override
+    public void onSucces(List<Jadwal> data) {
+        loadData(data);
+        Toast.makeText(this,"dadsasd",Toast.LENGTH_SHORT).show();
+        mProgressBar.hide();
 
-        protected String doInBackground(Integer... params) {
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            return "Task Completed.";
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            mProgressBar.hide();
-            loadData();
-        }
-        @Override
-        protected void onPreExecute() {
-        }
-        @Override
-        protected void onProgressUpdate(Integer... values) {
-        }
     }
 
+    @Override
+    public void onFailure(String messages) {
+        mProgressBar.hide();
+
+    }
 }

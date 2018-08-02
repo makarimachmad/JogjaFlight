@@ -37,6 +37,7 @@ public class TablePresenter {
                     @Override
                     public void onError(Throwable e) {
                         tableView.onFailure(e.getMessage());
+                        e.printStackTrace();
                     }
 
                     @Override
