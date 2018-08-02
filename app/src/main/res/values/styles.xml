@@ -47,4 +47,8 @@
         <item name="android:textColor">@color/tombolnormal</item>
     </style>
 
+    <style name="CardViewStyle">
+        <item name="android:background">@drawable/bentuk_tombolbantuan</item>
+    </style>
+
 </resources>

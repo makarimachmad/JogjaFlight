@@ -26,8 +26,7 @@
             android:orientation="vertical"
             android:padding="10dp"
             android:gravity="center"
-            android:id="@+id/ll"
-            >
+            android:id="@+id/ll">
             <include layout="@layout/activity_berita" />
             <LinearLayout
                 android:clipToPadding="false"
@@ -334,7 +333,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:padding="5dp"
-                        android:text="@string/absensi"
+                        android:text="@string/pembayaran"
                         android:textColor="@android:color/darker_gray" />
 
                 </LinearLayout>

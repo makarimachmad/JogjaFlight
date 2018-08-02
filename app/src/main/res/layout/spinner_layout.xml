@@ -22,7 +22,6 @@
         android:overlapAnchor="false" />
 
     <Button
-        android:onClick="tombolcari"
         android:id="@+id/tombolcariin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

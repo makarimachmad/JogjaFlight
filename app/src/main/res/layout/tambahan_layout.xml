@@ -10,6 +10,7 @@
 
     <Button
         android:id="@+id/tombolbantu"
+        android:onClick="tombolbantu"
         android:layout_width="match_parent"
         android:layout_height="50sp"
         android:layout_margin="20sp"
@@ -25,9 +26,9 @@
         android:layout_margin="20sp"
         android:text="@string/keluar"
         android:id="@+id/btn_keluar"
+        android:onClick="tombol_keluar"
         android:textColor="@color/colorPrimary"
         android:background="@drawable/warna_tombolkeluar"
         style="@style/Widget.AppCompat.Button.Borderless"/>
-
 
 </android.support.constraint.ConstraintLayout>

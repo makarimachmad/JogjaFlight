@@ -1,43 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#ECEFF1"
 
-    android:padding="5dp">
-    <TextView
-        android:id="@+id/id_kode"
-        android:layout_width="40dp"
-        android:gravity="center"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="kode" />
-    <TextView
-        android:id="@+id/id_mka"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_weight="1"
-        android:text="Nama MataKuliah" />
-    <TextView
-        android:id="@+id/id_waktu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_weight="1"
-        android:text="Waktu" />
-    <TextView
-        android:id="@+id/id_sks"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_weight="1"
-        android:text="Jumlah SKS" />
-    <TextView
-        android:id="@+id/id_dosen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_weight="1"
-        android:text="Dosen Pengampu" />
-</TableRow>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20sp"
+    android:orientation="vertical"
+    android:id="@+id/invoices_layout">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TableLayout
+            android:id="@+id/tableInvoices"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="0dp"
+            android:stretchColumns="*">
+        </TableLayout>
+    </ScrollView>
+
+</LinearLayout>

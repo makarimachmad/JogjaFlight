@@ -5,16 +5,17 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.witono.jogjaflight.R;
 
-public class MataKuliahActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class MataKuliahActivity extends AppCompatActivity{
 
 
-    String[] countryNames={"Term 1","Term 2","Term 3","Term 4"};
-    TextView judul;
+    String[] semester={"Term 1","Term 2","Term 3","Term 4"};
+    TextView judul,judultablejadwal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,31 +27,53 @@ public class MataKuliahActivity extends AppCompatActivity implements AdapterView
         getSupportActionBar().setDisplayUseLogoEnabled(true);
 
         judul= findViewById(R.id.judulhalaman);
-        judul.setText("Absensi Siswa");
+        judul.setText("Matakuliah");
 
 //        Typeface font = Typeface.createFromAsset(getAssets(), "Strato-linked.ttf");
 //        ((TextView)findViewById(R.id.judulhalaman)).setTypeface(font);
 
         Spinner spin = (Spinner) findViewById(R.id.simpleSpinner);
-        spin.setOnItemSelectedListener(this);
 
-        CustomAdapter_Spinner customAdapter=new CustomAdapter_Spinner(getApplicationContext(),countryNames);
+        CustomAdapter_Spinner customAdapter=new CustomAdapter_Spinner(getApplicationContext(),semester);
         spin.setAdapter(customAdapter);
+
+        spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            Button pencarian = findViewById(R.id.tombolcariin);
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+
+                    case 0: // for item 1
+
+                        pencarian.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(MataKuliahActivity.this, TabelJadwalActivity.class);
+                                startActivity(intent);
+
+                            }
+                        });
+
+                        break;
+
+                    case 1:
+                        pencarian.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                setContentView(R.layout.halamankosong);
+                            }
+                        });
+
+                        break;
+
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
-
-    @Override
-    public void onItemSelected(AdapterView<?> arg0, View arg1, int position,long id) {
-        //Toast.makeText(getApplicationContext(), countryNames[position], Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> arg0) {
-        // TODO Auto-generated method stub
-    }
-
-    public void tombolcari(View view){
-        Intent intents = new Intent(MataKuliahActivity.this,AbsensiActivity.class);
-        startActivity(intents);
-    }
 }

@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         carouselView = findViewById(R.id.carouselView);
         carouselView.setPageCount(sampleImages.length);
         carouselView.setImageListener(imageListener);
@@ -36,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setLogo(R.drawable.pekanbarulogo);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-
 
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
@@ -72,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
     public void tombolabsensi(View view){
         Intent intents = new Intent(MainActivity.this,AbsensiActivity.class);

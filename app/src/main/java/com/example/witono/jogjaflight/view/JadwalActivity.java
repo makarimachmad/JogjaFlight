@@ -16,8 +16,12 @@ public class JadwalActivity extends AppCompatActivity{
 
     String[] variabelTerm={"Term 1","Term 2","Term 3","Term 4"};
     TextView judul,judultablejadwal;
+
     Button pencarian;
     private int term;
+
+    String judulterm="";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,23 +35,60 @@ public class JadwalActivity extends AppCompatActivity{
         judul= findViewById(R.id.judulhalaman);
         judul.setText("Jadwal Siswa");
 
-        judultablejadwal= findViewById(R.id.judul_jadwaltabel);
-        judul.setText("Jadwal Siswa");
+
 
 //        Typeface font = Typeface.createFromAsset(getAssets(), "Strato-linked.ttf");
 //        ((TextView)findViewById(R.id.judulhalaman)).setTypeface(font);
 
         Spinner spin = (Spinner) findViewById(R.id.simpleSpinner);
-        //spin.setOnItemSelectedListener(this);
 
-        pencarian = findViewById(R.id.tombolcariin);
 
 
 
         spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            Button pencarian = findViewById(R.id.tombolcariin);
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                term = position+1;
+               term = position+1;
+
+                switch (position) {
+
+                    case 0: // for item 1
+
+                        pencarian.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                Intent intent = new Intent(JadwalActivity.this, TabelJadwalActivity.class);
+                                startActivity(intent);
+
+                            }
+                        });
+                        break;
+
+                    case 1:
+                        pencarian.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                judulterm="Term 2";
+                                Intent intent = new Intent(JadwalActivity.this, TabelJadwalActivity.class);
+                                startActivity(intent);
+                                setContentView(R.layout.halamankosong);
+                            }
+                        });
+                        break;
+
+                    case 2:
+                        pencarian.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                setContentView(R.layout.halamankosong);
+                            }
+                        });
+                        break;
+
+                }
+
             }
 
             @Override
@@ -61,8 +102,10 @@ public class JadwalActivity extends AppCompatActivity{
 
     }
 
+
     public void tombolcari(View view){
         Intent intents = new Intent(JadwalActivity.this,TabelActivity.class);
         startActivity(intents);
     }
+
 }
