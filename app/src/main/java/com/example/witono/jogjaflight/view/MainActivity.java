@@ -8,16 +8,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 
 import com.example.witono.jogjaflight.R;
 import com.synnapps.carouselview.CarouselView;
-import com.synnapps.carouselview.ImageListener;
 
 public class MainActivity extends AppCompatActivity {
 
     CarouselView carouselView;
-    int[] sampleImages = {R.drawable.image_1, R.drawable.image_2, R.drawable.image_3, R.drawable.image_4, R.drawable.image_5};
+    //int[] sampleImages = {R.drawable.image_1, R.drawable.image_2, R.drawable.image_3, R.drawable.image_4, R.drawable.image_5};
     //private Toolbar toolbar;
 
 
@@ -27,9 +25,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        carouselView = findViewById(R.id.carouselView);
-        carouselView.setPageCount(sampleImages.length);
-        carouselView.setImageListener(imageListener);
+//        carouselView = findViewById(R.id.carouselView);
+//        carouselView.setPageCount(sampleImages.length);
+//        carouselView.setImageListener(imageListener);
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.drawable.pekanbarulogo);
@@ -40,12 +38,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    ImageListener imageListener = new ImageListener() {
-        @Override
-        public void setImageForPosition(int position, ImageView imageView) {
-            imageView.setImageResource(sampleImages[position]);
-        }
-    };
+//    ImageListener imageListener = new ImageListener() {
+//        @Override
+//        public void setImageForPosition(int position, ImageView imageView) {
+//            imageView.setImageResource(sampleImages[position]);
+//        }
+//    };
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

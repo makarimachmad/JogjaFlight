@@ -149,8 +149,7 @@ public class LoginActivity extends BaseApp implements CallInterface,InjectableAc
         Paper.book().write("user",Common.User);
         //one time login
 
-
-        finish();
+       // finishAffinity();
     }
 
     @Override
