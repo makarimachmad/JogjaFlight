@@ -27,7 +27,7 @@
             android:padding="10dp"
             android:gravity="center"
             android:id="@+id/ll">
-            <include layout="@layout/activity_berita" />
+            <include layout="@layout/slidingberita" />
             <LinearLayout
                 android:clipToPadding="false"
                 android:gravity="center"

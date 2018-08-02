@@ -51,22 +51,6 @@ public class TabelActivity extends BaseApp implements TableCall {
     @Override
     public void onSucces(List<Jadwal> data) {
 
-        for(int i=0;i<3;i++){
-            TableRow row = (TableRow)getLayoutInflater().inflate(R.layout.layout_row, null);
-
-            TextView text_kode   =(TextView)row.findViewById(R.id.id_kode);
-            TextView text_mka   =(TextView)row.findViewById(R.id.id_mka);
-            TextView text_waktu   =(TextView)row.findViewById(R.id.id_waktu);
-            TextView text_sks   =(TextView)row.findViewById(R.id.id_sks);
-            TextView text_dosen   =(TextView)row.findViewById(R.id.id_dosen);
-
-            text_kode.setText(i+1+"");
-            text_mka.setText(data.get(i).getNama_makul());
-            text_waktu.setText(data.get(i).getJam_mulai());
-            text_sks.setText(data.get(i).getSks());
-            text_dosen.setText(data.get(i).getNama_lengkap());
-            tablelayoutid.addView(row);
-        }
 
     }
 

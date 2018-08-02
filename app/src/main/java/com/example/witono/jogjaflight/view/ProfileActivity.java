@@ -51,7 +51,6 @@ public class ProfileActivity extends BaseApp implements CallInterface {
                 if(c.getIdcabang().equals(Common.User.getIdcabang())){
                     userCabang = c;
                     break;
-
                 }
             }
             jurusan.setText(userCabang.getNama());
@@ -81,11 +80,6 @@ public class ProfileActivity extends BaseApp implements CallInterface {
         });*/
     }
 
-    public void tombolkeluar(View view){
-        Paper.book().delete("cabang");
-        Intent intent= new Intent(this,LoginActivity.class);
-        startActivity(intent); finishAffinity();
-    }
     public void tombolbantu(View view){
         sendEmail();
     }
@@ -114,8 +108,9 @@ public class ProfileActivity extends BaseApp implements CallInterface {
     }
 
     public void tombol_keluar(View view){
+        Paper.book().delete("cabang");
         Intent intent= new Intent(ProfileActivity.this,LoginActivity.class);
-        startActivity(intent);
+        startActivity(intent);finish();
     }
 
 
