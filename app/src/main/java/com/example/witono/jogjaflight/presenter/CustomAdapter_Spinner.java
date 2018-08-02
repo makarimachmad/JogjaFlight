@@ -1,4 +1,4 @@
-package com.example.witono.jogjaflight.view;
+package com.example.witono.jogjaflight.presenter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

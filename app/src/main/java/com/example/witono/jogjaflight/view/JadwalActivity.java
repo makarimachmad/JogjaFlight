@@ -10,6 +10,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.witono.jogjaflight.R;
+import com.example.witono.jogjaflight.presenter.CustomAdapter_Spinner;
 
 public class JadwalActivity extends AppCompatActivity{
 
