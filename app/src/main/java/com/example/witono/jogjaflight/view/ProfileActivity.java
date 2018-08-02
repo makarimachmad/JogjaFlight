@@ -108,9 +108,10 @@ public class ProfileActivity extends BaseApp implements CallInterface {
     }
 
     public void tombol_keluar(View view){
-        Paper.book().delete("cabang");
+        Paper.book().delete("user");
         Intent intent= new Intent(ProfileActivity.this,LoginActivity.class);
-        startActivity(intent);finish();
+        startActivity(intent);
+        finish();
     }
 
 
