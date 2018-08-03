@@ -20,6 +20,7 @@ import com.example.witono.jogjaflight.model.Jadwal;
 import com.example.witono.jogjaflight.presenter.TablePresenter;
 import com.example.witono.jogjaflight.repository.SiakadRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -31,8 +32,9 @@ public class TabelJadwalActivity extends BaseApp implements TableCall {
     @Inject
     public SiakadRepository siakad;
     ProgressDialog mProgressBar;
-    @Override
 
+    private List<Jadwal> jadwals = new ArrayList<Jadwal>();
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_row);
@@ -54,7 +56,7 @@ public class TabelJadwalActivity extends BaseApp implements TableCall {
             mTableLayout.setStretchAllColumns(true);
             startLoadData();
 
-            presenter.getTable(2018,1,Common.User.getId_users());
+            presenter.getTable(Integer.parseInt("20"+Common.User.getUsername().substring(3,5)),term,Common.User.getId_users());
 
         } catch (Exception e) {
             setContentView(R.layout.halamankosong);
@@ -279,8 +281,9 @@ public class TabelJadwalActivity extends BaseApp implements TableCall {
 
 
     @Override
-    public void onSucces(List<Jadwal> data) {
-        loadData(data);
+    public void onSucces(List data) {
+        jadwals = (List<Jadwal>) data;
+        loadData(jadwals);
         Toast.makeText(this,"dadsasd",Toast.LENGTH_SHORT).show();
         mProgressBar.hide();
 

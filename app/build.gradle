@@ -15,6 +15,7 @@ android {
         buildConfigField "int", "CACHETIME", "432000" // 5days
         buildConfigField "String", "API_KEY", "\"9e60b30d966ae548893cbc2764d2330d\""
         buildConfigField "String", "KATEGORI_JADWAL", "\"Jadwal\""
+        buildConfigField "String", "KATEGORI_KHS", "\"Nilai\""
     }
     buildTypes {
         release {

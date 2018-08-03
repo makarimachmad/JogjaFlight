@@ -1,5 +1,6 @@
 package com.example.witono.jogjaflight.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -16,6 +17,7 @@ public class NilaiActivity extends AppCompatActivity{
 
     String[] semester={"Term 1","Term 2","Term 3","Term 4"};
     TextView judul,judultablejadwal;
+    int term =0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,33 +43,10 @@ public class NilaiActivity extends AppCompatActivity{
             Button pencarian = findViewById(R.id.tombolcariin);
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                switch (position) {
-
-                    case 0: // for item 1
-
-                        pencarian.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                //Intent intent = new Intent(NilaiActivity.this, TabelKHSActivity.class);
-                                //startActivity(intent);
-                                setContentView(R.layout.halamankosong);
-
-                            }
-                        });
-
-                        break;
-
-                    case 1:
-                        pencarian.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                setContentView(R.layout.halamankosong);
-                            }
-                        });
-
-                        break;
-
-                }
+                term = position+1;
+                Intent intent = new Intent(NilaiActivity.this,TabelKHSActivity.class);
+                intent.putExtra("term",term);
+                startActivity(intent);
             }
 
             @Override

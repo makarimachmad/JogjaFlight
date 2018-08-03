@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -12,30 +13,52 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.witono.jogjaflight.BaseApp;
 import com.example.witono.jogjaflight.R;
+import com.example.witono.jogjaflight.common.Common;
+import com.example.witono.jogjaflight.interfaces.TableCall;
+import com.example.witono.jogjaflight.model.Jadwal;
 import com.example.witono.jogjaflight.model.KolomTabelKHS;
+import com.example.witono.jogjaflight.model.Nilai;
 import com.example.witono.jogjaflight.presenter.TabelKHSPresenter;
+import com.example.witono.jogjaflight.presenter.TablePresenter;
+import com.example.witono.jogjaflight.repository.SiakadRepository;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.inject.Inject;
 
 
-public class TabelKHSActivity extends AppCompatActivity {
+public class TabelKHSActivity extends BaseApp implements TableCall {
     private TableLayout mTableLayout;
     ProgressDialog mProgressBar;
-    @Override
+    private List<Nilai> nilai = new ArrayList<>();
+    private TablePresenter presenter;
 
-    protected void onCreate(Bundle savedInstanceState) {
+
+    @Inject
+    public SiakadRepository repository;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_row);
+        getDeps().inject(this);
+        int term = getIntent().getIntExtra("term",1);
 
+        presenter = new TablePresenter(this,repository);
         mProgressBar = new ProgressDialog(this);
+
 
         // setup the table
 
         mTableLayout = (TableLayout) findViewById(R.id.tableInvoices);
         mTableLayout.setStretchAllColumns(true);
+        presenter.getTableKhs(Integer.parseInt("20"+Common.User.getUsername().substring(3,5)),term,Common.User.getId_users());
         startLoadData();
     }
     public void startLoadData() {
@@ -43,9 +66,9 @@ public class TabelKHSActivity extends AppCompatActivity {
         mProgressBar.setMessage("Menampilkan..");
         mProgressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         mProgressBar.show();
-        new LoadDataTask().execute(0);
+
     }
-    public void loadData() {
+    public void loadData(List<Nilai> data) {
         int leftRowMargin=0;
         int topRowMargin=0;
         int rightRowMargin=0;
@@ -57,11 +80,11 @@ public class TabelKHSActivity extends AppCompatActivity {
         mediumTextSize = (int) getResources().getDimension(R.dimen.font_size_medium);
 
         TabelKHSPresenter tabelJadalPresenter = new TabelKHSPresenter();
-        KolomTabelKHS[] data = tabelJadalPresenter.getInvoices();
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM, yyyy");
 
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
-        int rows = data.length;
+        int rows = data.size();
 
 
         TextView textSpacer = null;
@@ -69,9 +92,9 @@ public class TabelKHSActivity extends AppCompatActivity {
         // -1 means heading row
 
         for(int i = -1; i < rows; i ++) {
-            KolomTabelKHS row = null;
+            Nilai row = null;
             if (i > -1)
-                row = data[i];
+                row = data.get(i);
             else {
                 textSpacer = new TextView(this);
                 textSpacer.setText("");
@@ -93,7 +116,7 @@ public class TabelKHSActivity extends AppCompatActivity {
                 tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, smallTextSize);
             } else {
                 tv.setBackgroundColor(Color.parseColor("#f8f8f8"));
-                tv.setText(String.valueOf(row.namamka));
+                tv.setText(String.valueOf(row.getNama_makul()));
                 tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
             }
 
@@ -117,7 +140,7 @@ public class TabelKHSActivity extends AppCompatActivity {
             }else {
                 tv2.setBackgroundColor(Color.parseColor("#ffffff"));
                 tv2.setTextColor(Color.parseColor("#000000"));
-                tv2.setText(row.sks);
+                tv2.setText(row.getSks());
             }
 
             final LinearLayout layCustomer = new LinearLayout(this);
@@ -147,7 +170,7 @@ public class TabelKHSActivity extends AppCompatActivity {
                 tv3.setBackgroundColor(Color.parseColor("#f8f8f8"));
                 tv3.setTextColor(Color.parseColor("#000000"));
                 tv3.setTextSize(TypedValue.COMPLEX_UNIT_PX, smallTextSize);
-                tv3.setText(row.grade);
+                tv3.setText(row.getGrade());
 
             }
             layCustomer.addView(tv3);
@@ -213,30 +236,23 @@ public class TabelKHSActivity extends AppCompatActivity {
         }
     }
 
-    class LoadDataTask extends AsyncTask<Integer, Integer, String> {
+    @Override
+    public void onSucces(List data) {
 
-        @Override
+        nilai = (List<Nilai>) data;
+        loadData(nilai);
+        mProgressBar.hide();
 
-        protected String doInBackground(Integer... params) {
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            return "Task Completed.";
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            mProgressBar.hide();
-            loadData();
-        }
-        @Override
-        protected void onPreExecute() {
-        }
-        @Override
-        protected void onProgressUpdate(Integer... values) {
-        }
     }
+
+    @Override
+    public void onFailure(String messages) {
+        Log.d("messages",messages);
+
+        mProgressBar.hide();
+
+    }
+
+
 
 }
