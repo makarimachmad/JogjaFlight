@@ -2,6 +2,7 @@ package com.example.witono.jogjaflight.view;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -85,7 +86,7 @@ public class LoginActivity extends BaseApp implements CallInterface,InjectableAc
         // TODO: Implement your own authentication logic here.
 
         progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Authenticating...");
+        progressDialog.setMessage("Harap Tunggu...");
         progressDialog.show();
       presenter.login(email,password);
 //        new android.os.Handler().postDelayed(
@@ -119,6 +120,32 @@ public class LoginActivity extends BaseApp implements CallInterface,InjectableAc
     }
 
 
+    public void bantuanlogin(View view){
+        sendEmail();
+    }
+
+    protected void sendEmail() {
+        Log.i("Send email", "");
+
+        String[] TO = {"makarimachmad@gmail.com"};
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setData(Uri.parse("mailto:"));
+        emailIntent.setType("text/plain");
+
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, TO);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Your subject");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Email message goes here");
+
+        try {
+            startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+            finish();
+            Log.i("Selesai Mengirim...", "");
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(LoginActivity.this,
+                    "There is no email client installed.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     public boolean validate() {
         boolean valid = true;
 
@@ -149,7 +176,6 @@ public class LoginActivity extends BaseApp implements CallInterface,InjectableAc
         Paper.book().write("user",Common.User);
         finish();
         //one time login
-
        //finishAffinity();
     }
 

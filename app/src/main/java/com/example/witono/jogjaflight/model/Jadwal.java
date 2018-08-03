@@ -161,7 +161,7 @@ public class Jadwal
     @Override
     public String toString()
     {
-        return "ClassPojo [kode_makul = "+kode_makul+", jam_selesai = "+jam_selesai+", jam_mulai = "+jam_mulai+", nama_lengkap = "+nama_lengkap+", hari = "+hari+", nama_makul = "+nama_makul+", nosiswa = "+nosiswa+", kode_program = "+kode_program+", sks = "+sks+", nama = "+nama+", nama_ruangan = "+nama_ruangan+", nama_kelas = "+nama_kelas+", semester = "+semester+"]";
+        return "ClassPojo [kode_makul = "+kode_makul+", jam_mulai = "+jam_mulai+", jam_selesai = "+jam_selesai+", nama_lengkap = "+nama_lengkap+", hari = "+hari+", nama_makul = "+nama_makul+", nosiswa = "+nosiswa+", kode_program = "+kode_program+", sks = "+sks+", nama = "+nama+", nama_ruangan = "+nama_ruangan+", nama_kelas = "+nama_kelas+", semester = "+semester+"]";
     }
 }
 

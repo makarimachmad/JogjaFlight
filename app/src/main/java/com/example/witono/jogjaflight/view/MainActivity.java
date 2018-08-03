@@ -28,8 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<GambarBerita> imageModelArrayList;
 
     private int[] myImageList = new int[]{R.drawable.harley2, R.drawable.benz2,
-            R.drawable.vecto,R.drawable.webshots
-            ,R.drawable.bikess,R.drawable.img1};
+            R.drawable.vecto,R.drawable.webshots ,R.drawable.bikess,R.drawable.img1};
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         ArrayList<GambarBerita> list = new ArrayList<>();
 
-        for(int i = 0; i < 6; i++){
+        for(int i = 0; i < myImageList.length; i++){
             GambarBerita imageModel = new GambarBerita();
             imageModel.setImage_drawable(myImageList[i]);
             list.add(imageModel);
@@ -79,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         final float density = getResources().getDisplayMetrics().density;
 
 //Set circle indicator radius
-        indicator.setRadius(5 * density);
+        indicator.setRadius(myImageList.length * density);
 
         NUM_PAGES =imageModelArrayList.size();
 

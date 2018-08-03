@@ -1,6 +1,5 @@
 package com.example.witono.jogjaflight.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -49,8 +48,9 @@ public class NilaiActivity extends AppCompatActivity{
                         pencarian.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Intent intent = new Intent(NilaiActivity.this, TabelKHSActivity.class);
-                                startActivity(intent);
+                                //Intent intent = new Intent(NilaiActivity.this, TabelKHSActivity.class);
+                                //startActivity(intent);
+                                setContentView(R.layout.halamankosong);
 
                             }
                         });
