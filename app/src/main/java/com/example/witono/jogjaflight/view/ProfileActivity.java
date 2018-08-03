@@ -14,7 +14,6 @@ import com.example.witono.jogjaflight.R;
 import com.example.witono.jogjaflight.common.Common;
 import com.example.witono.jogjaflight.interfaces.CallInterface;
 import com.example.witono.jogjaflight.model.Cabang;
-import com.example.witono.jogjaflight.network.SiakadService;
 import com.example.witono.jogjaflight.presenter.ProfilePresenter;
 import com.example.witono.jogjaflight.repository.SiakadRepository;
 
@@ -37,7 +36,6 @@ public class ProfileActivity extends BaseApp implements CallInterface {
         setContentView(R.layout.activity_profile);
         getDeps().inject(this);
         mPresenter = new ProfilePresenter(this,repository);
-
 
          jurusan= findViewById(R.id.jurusan_profil);
          nim= findViewById(R.id.nim_profil);
@@ -64,20 +62,7 @@ public class ProfileActivity extends BaseApp implements CallInterface {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.drawable.pekanbarulogo);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
-/*
-        keluar = findViewById(R.id.btn_keluar);
-        keluar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Paper.book().delete("user");
-                startActivity(new Intent(ProfileActivity.this,LoginActivity.class));
-                finish();
 
-                //Paper.book().delete("cabang");
-                Intent intent= new Intent(ProfileActivity.this,LoginActivity.class);
-                startActivity(intent);
-            }
-        });*/
     }
 
     public void tombolbantu(View view){

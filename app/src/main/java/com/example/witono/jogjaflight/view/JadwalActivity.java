@@ -36,15 +36,10 @@ public class JadwalActivity extends AppCompatActivity{
         judul= findViewById(R.id.judulhalaman);
         judul.setText("Jadwal Siswa");
 
-
-
 //        Typeface font = Typeface.createFromAsset(getAssets(), "Strato-linked.ttf");
 //        ((TextView)findViewById(R.id.judulhalaman)).setTypeface(font);
 
         Spinner spin = (Spinner) findViewById(R.id.simpleSpinner);
-
-
-
 
         spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             Button pencarian = findViewById(R.id.tombolcariin);
@@ -64,7 +59,6 @@ public class JadwalActivity extends AppCompatActivity{
         spin.setAdapter(customAdapter);
 
     }
-
 
     public void tombolcari(View view){
         Intent intents = new Intent(JadwalActivity.this,TabelJadwalActivity.class);

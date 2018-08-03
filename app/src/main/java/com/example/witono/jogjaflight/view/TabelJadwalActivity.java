@@ -2,9 +2,7 @@ package com.example.witono.jogjaflight.view;
 
 import android.app.ProgressDialog;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -19,13 +17,9 @@ import com.example.witono.jogjaflight.R;
 import com.example.witono.jogjaflight.common.Common;
 import com.example.witono.jogjaflight.interfaces.TableCall;
 import com.example.witono.jogjaflight.model.Jadwal;
-import com.example.witono.jogjaflight.model.KolomTabelJadwal;
-import com.example.witono.jogjaflight.presenter.TabelJadwalPresenter;
 import com.example.witono.jogjaflight.presenter.TablePresenter;
 import com.example.witono.jogjaflight.repository.SiakadRepository;
 
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -42,22 +36,30 @@ public class TabelJadwalActivity extends BaseApp implements TableCall {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_row);
-        getDeps().inject(this);
-        int term = getIntent().getIntExtra("term",1);
-        int tahun = Integer.valueOf("20"+Common.User.getUsername().substring(3,5));
-        presenter = new TablePresenter(this,siakad);
-        presenter.getTable(tahun,term,Common.User.getUsername());
 
 
-        mProgressBar = new ProgressDialog(this);
+        try {
+            getDeps().inject(this);
+            int term = getIntent().getIntExtra("term",1);
+            int tahun = Integer.valueOf("20"+ Common.User.getUsername().substring(3,5));
+            presenter = new TablePresenter(this,siakad);
+            presenter.getTable(tahun,term,Common.User.getUsername());
 
-        // setup the table
 
-        mTableLayout = (TableLayout) findViewById(R.id.tableInvoices);
-        mTableLayout.setStretchAllColumns(true);
-        startLoadData();
+            mProgressBar = new ProgressDialog(this);
 
-        presenter.getTable(2018,1,Common.User.getId_users());
+            // setup the table
+
+            mTableLayout = (TableLayout) findViewById(R.id.tableInvoices);
+            mTableLayout.setStretchAllColumns(true);
+            startLoadData();
+
+            presenter.getTable(2018,1,Common.User.getId_users());
+
+        } catch (Exception e) {
+            setContentView(R.layout.halamankosong);
+        }
+
     }
     public void startLoadData() {
         mProgressBar.setMessage("Menampilkan..");
@@ -76,11 +78,7 @@ public class TabelJadwalActivity extends BaseApp implements TableCall {
         smallTextSize = (int) getResources().getDimension(R.dimen.font_size_small);
         mediumTextSize = (int) getResources().getDimension(R.dimen.font_size_medium);
 
-        TabelJadwalPresenter tabelJadalPresenter = new TabelJadwalPresenter();
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM, yyyy");
-
-        DecimalFormat decimalFormat = new DecimalFormat("0.00");
         int rows = data.size();
 
 
