@@ -18,4 +18,9 @@
     <string name="pelanggaran">Daftar Pelanggaran</string>
     <string name="pengalaman">Pengalaman</string>
     <string name="performa">Nilai Performa</string>
+
+    <string name="namapembayaran">NamaPembayaran</string>
+    <string name="statuspembayaran">Status</string>
+    <string name="tanggal">Tanggal</string>
+    <string name="selengkapnya">Lihat Selengkapnya</string>
 </resources>

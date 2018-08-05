@@ -26,8 +26,8 @@
             android:gravity="bottom"
             android:padding="10dip"
             app:centered="true"
-            app:fillColor="#979595"
-            app:pageColor="#fff"
+            app:fillColor="#ceffffff"
+            app:pageColor="#8cffffff"
             app:snap="false" />
     </RelativeLayout>
 </RelativeLayout>

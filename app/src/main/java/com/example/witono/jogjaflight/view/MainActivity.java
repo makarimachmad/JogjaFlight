@@ -32,15 +32,14 @@ public class MainActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.drawable.pekanbarulogo);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
+
 
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
@@ -49,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
         imageModelArrayList = populateList();
 
         init();
-    }
 
+    }
 
     private ArrayList<GambarBerita> populateList(){
 
@@ -155,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intents);
     }
     public void tombolnilai(View view){
-        Intent intents = new Intent(MainActivity.this,NilaiActivity.class);
+        Intent intents = new Intent(MainActivity.this,KHSActivity.class);
         startActivity(intents);
     }
     public void tombolmatakuliah(View view){
@@ -171,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intents);
     }
     public void tombol_pembayaran(View view){
-        Intent intents = new Intent(MainActivity.this,NilaiActivity.class);
+        Intent intents = new Intent(MainActivity.this,KHSActivity.class);
         startActivity(intents);
     }
     public void tombol_pengalaman(View view){

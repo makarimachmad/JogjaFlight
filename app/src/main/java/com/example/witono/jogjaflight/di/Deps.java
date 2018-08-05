@@ -2,6 +2,7 @@ package com.example.witono.jogjaflight.di;
 
 import com.example.witono.jogjaflight.repository.RepositoryModule;
 import com.example.witono.jogjaflight.view.LoginActivity;
+import com.example.witono.jogjaflight.view.MainActivity;
 import com.example.witono.jogjaflight.view.ProfileActivity;
 import com.example.witono.jogjaflight.view.TabelJadwalActivity;
 import com.example.witono.jogjaflight.view.TabelKHSActivity;
@@ -19,4 +20,5 @@ public interface Deps {
     void inject(TabelKHSActivity activity);
 
 
+    void inject(MainActivity mainActivity);
 }

@@ -2,9 +2,7 @@ package com.example.witono.jogjaflight.view;
 
 import android.app.ProgressDialog;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -13,14 +11,11 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.witono.jogjaflight.BaseApp;
 import com.example.witono.jogjaflight.R;
 import com.example.witono.jogjaflight.common.Common;
 import com.example.witono.jogjaflight.interfaces.TableCall;
-import com.example.witono.jogjaflight.model.Jadwal;
-import com.example.witono.jogjaflight.model.KolomTabelKHS;
 import com.example.witono.jogjaflight.model.Nilai;
 import com.example.witono.jogjaflight.presenter.TabelKHSPresenter;
 import com.example.witono.jogjaflight.presenter.TablePresenter;
@@ -53,13 +48,14 @@ public class TabelKHSActivity extends BaseApp implements TableCall {
         presenter = new TablePresenter(this,repository);
         mProgressBar = new ProgressDialog(this);
 
-
         // setup the table
 
         mTableLayout = (TableLayout) findViewById(R.id.tableInvoices);
         mTableLayout.setStretchAllColumns(true);
-        presenter.getTableKhs(Integer.parseInt("20"+Common.User.getUsername().substring(3,5)),term,Common.User.getId_users());
         startLoadData();
+        //bawah
+        presenter.getTableKhs(Integer.parseInt("20"+Common.User.getUsername().substring(3,5)),term,Common.User.getId_users());
+
     }
     public void startLoadData() {
         mProgressBar.setCancelable(false);

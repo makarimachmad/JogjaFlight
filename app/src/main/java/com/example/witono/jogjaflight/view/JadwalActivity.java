@@ -46,7 +46,6 @@ public class JadwalActivity extends AppCompatActivity{
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                term = position+1;
-
             }
 
             @Override

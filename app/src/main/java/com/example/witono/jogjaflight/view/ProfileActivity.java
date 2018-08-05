@@ -26,6 +26,7 @@ import io.paperdb.Paper;
 public class ProfileActivity extends BaseApp implements CallInterface {
 
     private TextView jurusan, nama, nim;
+    String abc;
     private Button keluar;
     private ProfilePresenter mPresenter;
     @Inject
@@ -52,6 +53,15 @@ public class ProfileActivity extends BaseApp implements CallInterface {
                 }
             }
             jurusan.setText(userCabang.getNama());
+            if(Integer.parseInt(Common.User.getIdcabang())==1){
+                getSupportActionBar().setDisplayShowHomeEnabled(true);
+                getSupportActionBar().setLogo(R.drawable.jogjalogo);
+                getSupportActionBar().setDisplayUseLogoEnabled(true);
+            }else{
+                getSupportActionBar().setDisplayShowHomeEnabled(true);
+                getSupportActionBar().setLogo(R.drawable.pekanbarulogo);
+                getSupportActionBar().setDisplayUseLogoEnabled(true);
+            }
         }else {
             mPresenter.getCabang(Integer.parseInt(Common.User.getIdcabang()));
         }
@@ -59,9 +69,7 @@ public class ProfileActivity extends BaseApp implements CallInterface {
         nama.setText(Common.User.getNama());
         nim.setText(Common.User.getUsername());
 
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setLogo(R.drawable.pekanbarulogo);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
 
     }
 

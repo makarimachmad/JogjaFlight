@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.example.witono.jogjaflight.R;
 import com.example.witono.jogjaflight.presenter.CustomAdapter_Spinner;
 
-public class NilaiActivity extends AppCompatActivity{
+public class KHSActivity extends AppCompatActivity{
 
 
     String[] semester={"Term 1","Term 2","Term 3","Term 4"};
@@ -44,9 +44,6 @@ public class NilaiActivity extends AppCompatActivity{
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 term = position+1;
-                Intent intent = new Intent(NilaiActivity.this,TabelKHSActivity.class);
-                intent.putExtra("term",term);
-                startActivity(intent);
             }
 
             @Override
@@ -55,6 +52,13 @@ public class NilaiActivity extends AppCompatActivity{
             }
         });
 
+
+
+    }
+    public void tombolcari(View view){
+        Intent intents = new Intent(KHSActivity.this,TabelKHSActivity.class);
+        intents.putExtra("term",term);
+        startActivity(intents);
     }
 
 }

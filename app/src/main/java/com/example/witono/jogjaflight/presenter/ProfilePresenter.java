@@ -3,12 +3,10 @@ package com.example.witono.jogjaflight.presenter;
 import com.example.witono.jogjaflight.common.Common;
 import com.example.witono.jogjaflight.interfaces.CallInterface;
 import com.example.witono.jogjaflight.model.Cabang;
-
 import com.example.witono.jogjaflight.repository.SiakadRepository;
+import com.example.witono.jogjaflight.view.MainActivity;
 
 import java.util.List;
-
-import javax.inject.Inject;
 
 import io.paperdb.Paper;
 import rx.Observer;
@@ -28,6 +26,9 @@ public class ProfilePresenter {
 
     }
 
+    public ProfilePresenter(MainActivity mainActivity, SiakadRepository repository) {
+    }
+
 
     public void getCabang(final int cabang_id){
 
@@ -37,7 +38,7 @@ public class ProfilePresenter {
                 .subscribe(new Observer<List<Cabang>>() {
                     @Override
                     public void onCompleted() {
-
+                        return;
                     }
 
                     @Override

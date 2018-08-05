@@ -10,4 +10,5 @@
     <color name="iron">#CCCCCC</color>
     <color name="warnabantu">#27ae19</color>
     <color name="warnakeluar">#dc0e0e</color>
+    <color name="colorTransparant">#00cccccc</color>
 </resources>
